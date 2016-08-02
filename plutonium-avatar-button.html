@@ -1,0 +1,86 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-menu/paper-menu.html">
+<link rel="import" href="../paper-menu-button/paper-menu-button.html">
+
+<!--
+`plutonium-avatar-button`
+Avatar menu button.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="plutonium-avatar-button">
+
+    <template>
+
+        <style include="rimmel-shared-styles">
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            .avatar-circle {
+                display: inline-block;
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                background: #ddd;
+                line-height: 32px;
+                font-size: 15px;
+                color: #555;
+                text-align: center;
+            }
+
+        </style>
+
+        <paper-menu-button
+            horizontal-align="right"
+            vertical-align="top">
+            <div class="avatar-circle dropdown-trigger">[[monogram]]</div>
+            <paper-menu class="dropdown-content" selectable="menu">
+                <paper-item>
+                    <div class="avatar-circle">[[monogram]]</div>
+                    <paper-item-body two-line>
+                        <div>[[user.displayName]]</div>
+                        <div secondary>[[user.email]]</div>
+                    </paper-item-body>
+                </paper-item>
+                <content id="sessionMenu" select="session-menu"></content>
+            </paper-menu>
+        </paper-menu-button>
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'plutonium-avatar-button',
+            properties: {
+                user: {
+                    type: Object,
+                    value: {
+                        displayName: 'Anonymous',
+                        email: 'anonymous@topflavon.net',
+                    }
+                },
+                monogram: {
+                    type: String,
+                    computed: '_extractMonogram(user)'
+                }
+            },
+            _extractMonogram: function (user) {
+                var result = '';
+                var words = user.displayName.split(' ');
+                for (var i = 0; i < words.length; i++) {
+                    if (words[i].length > 0)
+                        result += words[i][0].toUpperCase();
+                }
+                return result;
+            }
+        });
+
+    </script>
+
+</dom-module>
