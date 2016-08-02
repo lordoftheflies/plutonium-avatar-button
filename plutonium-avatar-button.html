@@ -15,7 +15,7 @@ Avatar menu button.
 
     <template>
 
-        <style include="rimmel-shared-styles">
+        <style>
             :host {
                 display: block;
                 padding: 10px;
@@ -40,13 +40,13 @@ Avatar menu button.
             vertical-align="top">
             <div class="avatar-circle dropdown-trigger">[[monogram]]</div>
             <paper-menu class="dropdown-content" selectable="menu">
-                <paper-item>
+                <div>
                     <div class="avatar-circle">[[monogram]]</div>
                     <paper-item-body two-line>
                         <div>[[user.displayName]]</div>
                         <div secondary>[[user.email]]</div>
                     </paper-item-body>
-                </paper-item>
+                </div>
                 <content id="sessionMenu" select="session-menu"></content>
             </paper-menu>
         </paper-menu-button>
