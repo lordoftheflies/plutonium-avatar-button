@@ -42,16 +42,18 @@ Avatar menu button.
             horizontal-align="right"
             vertical-align="top">
             <div class="avatar-circle dropdown-trigger">[[monogram]]</div>
-            <paper-menu class="dropdown-content" selectable="a.menu">
+            <paper-menu class="dropdown-content" selectable=".menu">
                 <paper-item class="header">
                     <div class="avatar-circle">[[monogram]]</div>
                     <paper-item-body two-line>
                         <div>[[user.displayName]]</div>
                         <div secondary>[[user.email]]</div>
                     </paper-item-body>
+
                 </paper-item>
+
                 <content select=".menu"></content>
-                
+
             </paper-menu>
         </paper-menu-button>
 
