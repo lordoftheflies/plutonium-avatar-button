@@ -1,5 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 
+<!--<link rel="import" href="../">-->
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-menu/paper-menu.html">
 <link rel="import" href="../paper-menu-button/paper-menu-button.html">
@@ -39,15 +42,16 @@ Avatar menu button.
             horizontal-align="right"
             vertical-align="top">
             <div class="avatar-circle dropdown-trigger">[[monogram]]</div>
-            <paper-menu class="dropdown-content" selectable="menu">
-                <div>
+            <paper-menu class="dropdown-content" selectable="a.menu">
+                <paper-item class="header">
                     <div class="avatar-circle">[[monogram]]</div>
                     <paper-item-body two-line>
                         <div>[[user.displayName]]</div>
                         <div secondary>[[user.email]]</div>
                     </paper-item-body>
-                </div>
-                <content id="sessionMenu" select=".session-menu"></content>
+                </paper-item>
+                <content select="menu"></content>
+                
             </paper-menu>
         </paper-menu-button>
 
