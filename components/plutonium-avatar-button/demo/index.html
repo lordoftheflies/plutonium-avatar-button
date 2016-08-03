@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <title>plutonium-avatar-button demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+        <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+        <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+        <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+        <link rel="import" href="../../paper-item/paper-item.html">
+        <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+
+        <link rel="import" href="../plutonium-avatar-button.html">
+
+        <style is="custom-style" include="demo-pages-shared-styles">
+        </style>
+    </head>
+    <body>
+
+        <div class="vertical-section-container centered">
+            <h3>Basic plutonium-avatar-button Demo</h3>
+            <demo-snippet>
+                <template>
+                    <plutonium-avatar-button>
+                        <a href="/profile-view" class="menu">
+                            <paper-item class="menu">
+                                <iron-icon icon="account-circle" item-icon></iron-icon>
+                                <span id="profileMenuTitle">Profile</span>
+                            </paper-item>
+                        </a>
+                        <a href="#" on-tap="onLogout" class="menu">
+                            <paper-item class="menu">
+                                <iron-icon icon="markunread-mailbox" item-icon></iron-icon>
+                                <span id="logoutButtonLabel">Logout</span>
+                            </paper-item>
+                        </a>
+                    </plutonium-avatar-button>
+                </template>
+            </demo-snippet>
+        </div>
+
+    </body>
+</html>
