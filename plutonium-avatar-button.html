@@ -46,8 +46,8 @@ Avatar menu button.
                 <paper-item class="header">
                     <div class="avatar-circle">[[monogram]]</div>
                     <paper-item-body two-line>
-                        <div>[[user.displayName]]</div>
-                        <div secondary>[[user.email]]</div>
+                        <div>[[displayName]]</div>
+                        <div secondary>[[displayUnique]]</div>
                     </paper-item-body>
 
                 </paper-item>
@@ -73,17 +73,44 @@ Avatar menu button.
                 },
                 monogram: {
                     type: String,
-                    computed: '_extractMonogram(user)'
+                    notify: true
+                },
+                displayNameAttribute: {
+                    type: String,
+                    notify: true,
+                    value: 'displayName'
+                },
+                displayUniqueAttribute: {
+                    type: String,
+                    notify: true,
+                    value: 'email'
+                },
+                displayName: {
+                    type: String,
+                    computed: '_computeDisplayName(user, displayNameAttribute)'
+                },
+                displayUnique: {
+                    type: String,
+                    computed: '_computeDisplayUnique(user, displayUniqueAttribute)'
                 }
             },
-            _extractMonogram: function (user) {
+            observers: [
+                '_extractMonogram(user, displayUniqueAttribute, displayNameAttribute)'
+            ],
+            _extractMonogram: function (user, displayNameAttribute) {
                 var result = '';
-                var words = user.displayName.split(' ');
+                var words = user[displayNameAttribute].split(' ');
                 for (var i = 0; i < words.length; i++) {
                     if (words[i].length > 0)
                         result += words[i][0].toUpperCase();
                 }
-                return result;
+                this.monogram = result;
+            },
+            _computeDisplayName: function(user, displayNameAttribute) {
+                return user[displayNameAttribute];
+            },
+            _computeDisplayUnique: function(user, displayUniqueAttribute) {
+                return user[displayUniqueAttribute];
             }
         });
 
