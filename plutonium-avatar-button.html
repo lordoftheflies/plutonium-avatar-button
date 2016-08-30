@@ -99,7 +99,7 @@ Avatar menu button.
             ],
             _extractMonogram: function (user, displayNameAttribute) {
                 var result = '';
-                var words = user[displayNameAttribute].split(' ');
+                var words = (user[displayNameAttribute]) ? user[displayNameAttribute].split(' ') : [];
                 for (var i = 0; i < words.length; i++) {
                     if (words[i].length > 0)
                         result += words[i][0].toUpperCase();
