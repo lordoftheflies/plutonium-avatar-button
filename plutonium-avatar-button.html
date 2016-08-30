@@ -107,10 +107,10 @@ Avatar menu button.
                 this.monogram = result;
             },
             _computeDisplayName: function(user, displayNameAttribute) {
-                return user[displayNameAttribute];
+                return (user[displayNameAttribute]) ? user[displayNameAttribute] : null;
             },
             _computeDisplayUnique: function(user, displayUniqueAttribute) {
-                return user[displayUniqueAttribute];
+                return (user[displayNameAttribute]) ? user[displayUniqueAttribute] : null;
             }
         });
 
