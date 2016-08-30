@@ -99,7 +99,7 @@ Avatar menu button.
             ],
             _extractMonogram: function (user, displayNameAttribute) {
                 var result = '';
-                var words = (user[displayNameAttribute]) ? user[displayNameAttribute].split(' ') : [];
+                var words = (user && user[displayNameAttribute]) ? user[displayNameAttribute].split(' ') : [];
                 for (var i = 0; i < words.length; i++) {
                     if (words[i].length > 0)
                         result += words[i][0].toUpperCase();
@@ -107,10 +107,10 @@ Avatar menu button.
                 this.monogram = result;
             },
             _computeDisplayName: function(user, displayNameAttribute) {
-                return (user[displayNameAttribute]) ? user[displayNameAttribute] : null;
+                return (user) ? user[displayNameAttribute] : null;
             },
             _computeDisplayUnique: function(user, displayUniqueAttribute) {
-                return (user[displayUniqueAttribute]) ? user[displayUniqueAttribute] : null;
+                return (user) ? user[displayUniqueAttribute] : null;
             }
         });
 
