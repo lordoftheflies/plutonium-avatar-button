@@ -96,11 +96,11 @@ Avatar menu button.
                 }
                 this.monogram = result;
             },
-            _computeDisplayName: function(user, displayNameAttribute) {
-                return this.user.principal.displayName;
+            _computeDisplayName: function(user) {
+                return (user) ? ((user.principal) ? user.principal.displayName : null) : null;
             },
-            _computeDisplayUnique: function(user, displayUniqueAttribute) {
-                return user.name;
+            _computeDisplayUnique: function(user) {
+                return (user) ? user.name : null;
             }
         });
 
