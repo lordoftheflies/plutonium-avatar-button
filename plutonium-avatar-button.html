@@ -46,8 +46,8 @@ Avatar menu button.
                 <paper-item class="header">
                     <div class="avatar-circle">[[monogram]]</div>
                     <paper-item-body two-line>
-                        <div>[[user.principal.displayName]]</div>
-                        <div secondary>[[user.name]]</div>
+                        <div>[[user.displayName]]</div>
+                        <div secondary>[[user.username]]</div>
                     </paper-item-body>
 
                 </paper-item>
@@ -67,10 +67,8 @@ Avatar menu button.
                 user: {
                     type: Object,
                     value: {
-                        "principal": {
-                            "displayName":"Anonymous"
-                        },
-                        "name":"anonymous@topflavon.net"
+                        "displayName":"Anonymous"
+                        "username":"anonymous@topflavon.net"
                     }
                 },
                 monogram: {
@@ -79,15 +77,15 @@ Avatar menu button.
                 },
                 displayName: {
                     type: String,
-                    computed: '_computeDisplayName(user.principal.displayName)'
+                    computed: '_computeDisplayName(user.displayName)'
                 },
                 displayUnique: {
                     type: String,
-                    computed: '_computeDisplayUnique(user.name)'
+                    computed: '_computeDisplayUnique(user.username)'
                 }
             },
             observers: [
-                '_extractMonogram(user.principal.displayName)'
+                '_extractMonogram(user.displayName)'
             ],
             _extractMonogram: function (displayName) {
                 var result = '';
@@ -99,10 +97,10 @@ Avatar menu button.
                 this.monogram = result;
             },
             _computeDisplayName: function(user) {
-                return (user) ? ((user.principal) ? user.principal.displayName : null) : null;
+                return (user) ? user.displayName : null;
             },
             _computeDisplayUnique: function(user) {
-                return (user) ? user.name : null;
+                return (user) ? user.username : null;
             }
         });
 
